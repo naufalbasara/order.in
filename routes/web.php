@@ -16,3 +16,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// bagian Mitsal
+// Landing Page
+
+
+// bagian Fiqri
+// Menu
+
+
+// Bagian Hardhika
+// Menu dengan Cart
+
+
+// Bagian Aji
+// Detail Pesanan
+
+
+// bagian RB
+// Detail Menu
+Route::get('/detail', function() {
+    return view('detail');
+});
+
+// Invoice Pesanan
+Route::get('/invoice', function () {
+    return view('invoice');
+});

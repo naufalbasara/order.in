@@ -1,0 +1,178 @@
+.bg-detail {
+    height: 234px;
+    background: url("../img/background/bg-pesanan.png") no-repeat;
+    background-size: cover;
+}
+
+.row {
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.row h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #4e313a;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.row .nums {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-size: 14.88px;
+    color: #4e313a;
+    margin-bottom: 0px !important;
+    padding: 6px !important;
+}
+
+.row .menu {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 14.88px;
+    color: #4e313a;
+    padding-left: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.row .total {
+    font-family: "Roboto", sans-serif;
+    font-weight: 800;
+    font-size: 14.88px;
+    color: #4e313a;
+}
+
+.row .nomu {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-size: 10.64px;
+    padding: 4px !important;
+    border-radius: 5.32px;
+}
+
+.tambah {
+    font-family: "Roboto", sans-serif;
+}
+
+.tambah h4 {
+    font-weight: 500;
+    font-size: 15px;
+    color: #4e313a;
+}
+
+.tambah p {
+    font-weight: 300;
+    font-size: 12px;
+    color: #4e313a;
+    margin-bottom: 0px !important;
+}
+
+.tambah button {
+    border: 2px solid #f46c49;
+    border-radius: 15.94px;
+    font-weight: 700;
+    font-size: 11.16px;
+    color: #f46c49;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+.tambah .col-4 {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.tambah .col-8 {
+    padding-right: 0px !important;
+}
+
+div .row {
+    padding-left: 8px !important;
+}
+
+.tambah img {
+    margin-right: 7.17px;
+}
+
+.detail {
+    margin-top: 40px;
+    font-family: "Roboto", sans-serif;
+    margin-left: 10px;
+    margin-right: 10px;
+    background: #ffffff;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.detail h3 {
+    font-weight: 500;
+    font-size: 18px;
+    color: #4e313a;
+    padding-top: 16px;
+    margin-bottom: 33px;
+}
+
+.detail .first {
+    padding-left: 19px;
+    font-weight: 400;
+    font-size: 15px;
+    color: #4e313a;
+}
+
+.detail .second {
+    padding-right: 20px;
+    font-weight: 400;
+    font-size: 15px;
+    color: #4e313a;
+    padding-bottom: 10px;
+}
+
+.detail .zenbu {
+    font-weight: 800;
+}
+
+.bayar {
+    margin-left: 1px;
+    margin-right: 1px;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 48px;
+}
+
+.bayar button {
+    background: #f46c49;
+    border-radius: 10px;
+    border-color: #f46c49;
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+    padding: 0px !important;
+}
+
+.bayar button img {
+    padding-left: 1.71px;
+    margin-right: 8.38px;
+    padding-top: 16px;
+    padding-bottom: 15px;
+}
+
+hr {
+    border: 1px solid #dadada;
+}
+
+.qr h4 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.qr img {
+    width: 197px;
+    height: 197px;
+    text-align: center !important;
+    margin-bottom: 25px;
+}

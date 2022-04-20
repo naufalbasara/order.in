@@ -1,0 +1,5 @@
+.bg-detail {
+    height: 270px;
+    background: url("../img/background/bg-detail.png") no-repeat;
+    background-size: cover;
+}
