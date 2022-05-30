@@ -19,3 +19,13 @@ h1 {
     color: #fff;
     border-radius: 38px !important;
 }
+
+.btn-primary:hover {
+    background-color:  #fff;
+    border-color: #f46c49;
+    color: #f46c49;
+}
+
+.btn-primary:focus {
+    border-color: #f46c49 !important;
+}

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Menu;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Menu::create([
+            'namaMenu' => 'Ayam Goreng',
+            'harga' => '10000',
+            'kategori' => 'Makanan'
+        ]);
+
+        Menu::create([
+            'namaMenu' => 'Sanger Dingin',
+            'harga' => '15000',
+            'kategori' => 'Minuman'
+        ]);
+
     }
 }

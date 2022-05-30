@@ -1,0 +1,97 @@
+.bg-dapur {
+    background: url('../img/BGListMenu.png') no-repeat;
+    background-size: cover;
+
+}
+
+h1 {
+    padding-top: 2.163rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+p {
+    padding-bottom: 2.063rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #fff;
+    font-size: 12px;
+}
+
+
+input {
+    border-radius: 20px !important;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px !important;
+    text-align: center;
+    margin-top: 1.438rem;
+    background-color: #F0F0F0 !important;
+}
+
+.foodGroup h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #4E313A;
+    font-size: 1.5rem;
+    margin-top: 1.188rem;
+}
+
+.foodGroup h5 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #4E313A;
+    font-size: 14.88px;
+    padding-top: 11.12px;
+}
+
+.foodGroup p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    color: #4E313A;
+    font-size: 14.48px;
+    margin-top: 1.188rem;
+    padding-bottom: 12.59px;
+}
+
+div .card {
+    border-radius: 11.45px !important;
+    box-shadow: 1.14493px 1.14493px 4.57971px rgba(18, 18, 18, 0.25);
+}
+
+div .card-body {
+    padding: 0px 16px !important;
+}
+
+.footer {
+    background: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    border: 2px solid rgba(167, 167, 167, 0.21) ;
+    box-sizing: border-box;
+    border-radius: 30px 30px 0px 0px;
+    border-top: #A7A7A7 solid 2px;
+    border-left: #A7A7A7 solid 2px;
+    border-right: #A7A7A7 solid 2px;
+}
+
+.orderbox {
+    padding: 18px 19px 16px 20px !important;
+}
+
+.buton {
+    margin-top: 0.438rem;
+    background: #F46C49;
+    border-radius: 20px;
+}
+
+.buton p {
+    margin-bottom: 0px !important;
+    padding: 12px 12px 11px 13px !important;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+}

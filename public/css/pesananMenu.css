@@ -1,6 +1,6 @@
 .bg-detail {
     height: 234px;
-    background: url("../img/background/bg-pesanan.png") no-repeat;
+    background: url("../img/bg-pesanan.png") no-repeat;
     background-size: cover;
 }
 
@@ -175,4 +175,11 @@ hr {
     height: 197px;
     text-align: center !important;
     margin-bottom: 25px;
+}
+
+
+.nomu[type="number"]::-webkit-inner-spin-button,
+.nomu[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
