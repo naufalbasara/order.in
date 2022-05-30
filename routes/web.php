@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PesananController;
+use App\Http\Controllers\MenuController;
+use App\Http\Livewire\CartCreate;
+use App\Http\Livewire\ShowMenu;
+use App\Http\Livewire\ShowMenu2;
+use App\Http\Livewire\CartList;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +24,7 @@ Route::get('/', function () {
 });
 // bagian Mitsal
 // Landing Page
-
+Route::get('/{meja}', [PesananController::class, 'index']);
 
 // bagian Fiqri
 // Menu
