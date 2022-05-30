@@ -28,7 +28,10 @@ Route::get('/{meja}', [PesananController::class, 'index']);
 
 // bagian Fiqri
 // Menu
-
+Route::get('/{meja}/menu', [MenuController::class, "index"])->name('menu');
+// Route::post('/{meja}/menu', ShowMenu::class)->name('addToCart');
+Route::get('/{meja}/detail/{menu}', [PesananController::class, "detail"])->name('detail');
+Route::post('/{meja}/detail/{menu}', [PesananController::class, "pesan"])->name('pesan');
 
 // Bagian Hardhika
 // Menu dengan Cart

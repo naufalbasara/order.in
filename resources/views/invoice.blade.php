@@ -1,7 +1,7 @@
 @extends('templates.main')
 
 @section('css')
-    <link href="css/pesananMenu.css" rel="stylesheet" >
+    <link href="/css/pesananMenu.css" rel="stylesheet" >
 @endsection
 
 @section('content')
@@ -74,3 +74,4 @@
 @section('js')
 <script src="/js/index.js"></script>
 @endsection
+
