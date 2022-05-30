@@ -30,11 +30,11 @@ Route::get('/', function () {
 
 // Bagian Aji
 // Detail Pesanan
-
+Route::get('/{meja}/detailPesanan', [MenuController::class, "cartList"])->name('detailPesanan');
 
 // bagian RB
 // Detail Menu
-Route::get('/detail', function() {
+Route::get('/detail', function () {
     return view('detail');
 });
 
