@@ -20,7 +20,8 @@ class MenuController extends Controller
 
 
 
-    public function index(Meja $meja) {
+    public function index(Meja $meja)
+    {
         //
         $menu = Menu::all();
         $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
@@ -34,11 +35,14 @@ class MenuController extends Controller
         ]);
     }
 
-    public function cartList(Meja $meja) {
+    public function cartList(Meja $meja)
+    {
         //
         $cartItems = \Cart::session($meja->id)->getContent()->toArray();
         $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
         $cartTotal = \Cart::session($meja->id)->getTotal();
+
+        // dd($cartItems);
 
         return view('detailPesanan', [
             'cartItems' => $cartItems,
@@ -47,7 +51,6 @@ class MenuController extends Controller
             'meja' => $meja
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -85,7 +88,6 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-       
     }
 
     /**
