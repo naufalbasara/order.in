@@ -21,8 +21,13 @@ class MenuController extends Controller
 
 
 
+<<<<<<< HEAD
 
     public function index(Request $request, Meja $meja) {
+=======
+    public function index(Meja $meja)
+    {
+>>>>>>> b48536ef77a97bad918b48732d82f65af18ce27e
         //
         // $menu = Menu::all();
         $search = $request->input('search');
@@ -47,12 +52,17 @@ class MenuController extends Controller
         ]);
     }
 
+<<<<<<< HEAD
     // public function searchMenu(Meja $meja){
     //     return view('menu', ['menu' => Menu::latest()->filter(request(['search'])), 'meja' => $meja]);
     // }
 
 
     public function cartList(Meja $meja) {
+=======
+    public function cartList(Meja $meja)
+    {
+>>>>>>> b48536ef77a97bad918b48732d82f65af18ce27e
         //
         $cartItems = \Cart::session($meja->id)->getContent()->toArray();
         $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
@@ -69,7 +79,6 @@ class MenuController extends Controller
 
 
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -107,7 +116,6 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-       
     }
 
     /**

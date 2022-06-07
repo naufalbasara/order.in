@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Broadcast;
-
+git 
 /*
 |--------------------------------------------------------------------------
 | Broadcast Channels

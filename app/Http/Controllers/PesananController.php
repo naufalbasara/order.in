@@ -19,11 +19,11 @@ class PesananController extends Controller
      */
     public function index(Meja $meja)
     {
-        return view('index', ['meja'=>$meja]);
+        return view('index', ['meja' => $meja]);
     }
 
 
- 
+
 
 
     /**
@@ -43,13 +43,12 @@ class PesananController extends Controller
     public function detail(Meja $meja, Menu $menu)
     {
         //
-        return view('detail', ['menu'=>$menu, 'meja'=>$meja]);
-        
+        return view('detail', ['menu' => $menu, 'meja' => $meja]);
     }
 
     public function pesan(Request $request, Meja $meja, Menu $menu)
-    {   
-     
+    {
+
         $uniqid = Str::random(9);
 
         $validated = $request->validate([
@@ -58,8 +57,8 @@ class PesananController extends Controller
             'jumlah' => 'required|numeric|min:1',
         ]);
 
-   
 
+<<<<<<< HEAD
         \Cart::session($meja->id)->add([
             'id' => $uniqid,
             'name' => $request->namaMenu,
@@ -70,12 +69,20 @@ class PesananController extends Controller
                 'notes' => $request->note,
             ],
         ]
-        );
+=======
 
-        
-      
+        \Cart::session($meja->id)->add(
+            [
+                'id' => $uniqid,
+                'name' => $request->namaMenu,
+                'price' => $request->harga,
+                'notes' => $request->note,
+                'quantity' => $request->jumlah,
+            ]
+>>>>>>> b48536ef77a97bad918b48732d82f65af18ce27e
+        );
     }
-        
+
 
 
     public function detailPesanan(Meja $meja, Pesanan $pesanan)
@@ -83,10 +90,10 @@ class PesananController extends Controller
         //
         $menu = Menu::all();
         $pesanan_detail = DetailPesanan::where('idPesanan', $pesanan->id)->get();
-        return view('detailPesanan', ['pesanan'=>$pesanan, 'pesanan_detail'=>$pesanan_detail, 'meja'=>$meja]);
+        return view('detailPesanan', ['pesanan' => $pesanan, 'pesanan_detail' => $pesanan_detail, 'meja' => $meja]);
     }
 
-    
+
 
 
 
@@ -97,7 +104,7 @@ class PesananController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   
+
 
     /**
      * Show the form for editing the specified resource.
@@ -171,9 +178,28 @@ class PesananController extends Controller
         ]);
     }
 
+<<<<<<< HEAD
 
 
 
+=======
+    public function invoice(Meja $meja)
+    {
+        //
+        $cartItems = \Cart::session($meja->id)->getContent()->toArray();
+        $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
+        $cartTotal = \Cart::session($meja->id)->getTotal();
+
+        // dd($cartItems);
+
+        return view('invoice', [
+            'cartItems' => $cartItems,
+            'cartTotalQuantity' => $cartTotalQuantity,
+            'cartTotal' => $cartTotal,
+            'meja' => $meja
+        ]);
+    }
+>>>>>>> b48536ef77a97bad918b48732d82f65af18ce27e
 }
 
 

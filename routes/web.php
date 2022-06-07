@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
 use App\Http\Livewire\CartCreate;
 use App\Http\Livewire\ShowMenu;
@@ -19,9 +21,33 @@ use App\Http\Livewire\CartList;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('/admin/menu/add', [AdminController::class, 'add_menu']);
+    Route::post('/admin/menu/store', [AdminController::class, 'store_menu']);
+    Route::get('/admin/menu/edit/{menu}', [AdminController::class, 'edit_menu']);
+    Route::post('/admin/menu/update/{menu}', [AdminController::class, 'update_menu'])->name('update-menu');
+    Route::get('/admin/menu/delete/{menu}', [AdminController::class, 'delete_menu'])->name('delete-menu');
 });
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index']);
+    // Admin Menu Section
+    Route::get('/admin/menu', [AdminController::class, 'view_menu']);
+
+    // Admin Info Section
+    Route::get('/admin/info-restaurant/{restoran}', [AdminController::class, 'view_info']);
+    Route::post('/admin/info-restaurant/update/{restoran}', [AdminController::class, 'update_info'])->name('update-info');
+
+    // Admin Sales Section
+    Route::get('/admin/sales', [AdminController::class, 'view_sales']);
+
+    // Admin Payment
+    Route::get('/admin/payment', [AdminController::class, 'view_payment']);
+});
+Route::get('/admin/login', [LoginController::class, 'index'])->name('login');
+Route::post('/admin/login', [LoginController::class, 'authenticate']);
+Route::get('/admin/register', [LoginController::class, 'index_register']);
+Route::post('/admin/register', [LoginController::class, 'register']);
+Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
 // bagian Mitsal
 // Landing Page
 Route::get('/{meja}', [PesananController::class, 'index']);
@@ -44,11 +70,9 @@ Route::delete('/{meja}/detail/{menu}/{id}', [PesananController::class, 'destroy'
 // Menu dengan Cart
 
 
-// Bagian Aji
+/// Bagian Aji
 // Detail Pesanan
 Route::get('/{meja}/detailPesanan', [MenuController::class, "cartList"])->name('detailPesanan');
-
-
 // bagian RB
 // Detail Menu
 Route::get('/detail', function () {
@@ -57,4 +81,3 @@ Route::get('/detail', function () {
 
 // Invoice Pesanan
 Route::get('/{meja}/invoice', [PesananController::class, 'invoice'])->name('invoice');
-
