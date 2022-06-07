@@ -14,46 +14,36 @@
 
             <div class="row mb-1">
                 <h1>Menu yang dipesan</h1>
+                @foreach ($cartItems as $item)
+                @if($item['quantity'])
                 <div class="col-2  text-center">
-                    <p class="nums border">0x</p>
+                    <p class="nums border">{{$item['quantity']}}</p>
                 </div>
                 <div class="col-6 ps-2">
-                    <p class="menu">Kopi Susu Gula Aren</p>
+                    <p class="menu">{{$item['name']}}</p>
                 </div>
                 <div class="col-4 text-end">
-                    <p class="total mb-0">Rp 30.000</p>
+                    <p class="total mb-0">Rp {{$item['price'] * $item['quantity']}}</p>
                 </div>
+                @endif
+                @endforeach
 
             </div>
 
             <hr>
 
-            <div class="row">
-                <div class="col-2  text-center">
-                    <p class="nums border">0x</p>
-                </div>
-                <div class="col-6 ps-2">
-                    <p class="menu">Kopi Susu Gula Aren</p>
-                </div>
-                <div class="col-4 text-end">
-                    <p class="total mb-0">Rp 30.000</p>
-                </div>
-
-            </div>
 
             <div class="row detail ">
                 <h3 class="text-center">Detail Pembayaran</h3>
                 <div class="col-6 first">
                     <p class="">Subtotal</p>
-                    <p class="">PB1</p>
                     <hr>
                     <p class="zenbu">Total</p>
                 </div>
                 <div class="col-6 second text-end">
-                    <p class="">Rp 70.000</p>
-                    <p class="">Rp 7.000</p>
+                    <p class="">Rp {{ \Cart::getTotal() }}</p>
                     <hr>
-                    <p class="zenbu">Rp 77.000</p>
+                    <p class="zenbu">Rp {{ \Cart::getTotal() }}</p>
                 </div>
             </div>
 
@@ -74,4 +64,3 @@
 @section('js')
 <script src="/js/index.js"></script>
 @endsection
-
