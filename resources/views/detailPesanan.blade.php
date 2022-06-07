@@ -13,30 +13,23 @@
         </div>
 
 
-        <div class="row">
+        <div class="row align-items-start">
             <h1>Menu yang dipesan</h1>
             @foreach ($cartItems as $item)
-                <form wire.submit.prevent="updateCart">
-                    <div class="col-2  text-center">
+                @if ($item['quantity'] > 0)
+                    <div class="col-2 align-self-center text-center">
                         <p class="nums border">{{ $item['quantity'] }}x</p>
                     </div>
-                    <div class="col-6 ps-2">
+                    <div class="col-6 ps-2 align-self-center">
                         <p class="menu">{{ $item['name'] }}</p>
-                        <img src="/img/Edit (2).png" alt="">
+
                     </div>
                     <div class="col-4 text-end">
+                        <a href="{{ route('detailEdit', [$meja->id, $item['attributes']['menu'], $item['id']]) }}"><img
+                                src="/img/Edit (2).png" alt=""></a>
                         <p id="linePrice" class="total mb-0">Rp {{ $item['price'] * $item['quantity'] }}</p>
-                        <div class="row justify-content-end p-0 text-center input-group ">
-                            <div class="col-3 p-0"><img src="/img/minus.png" alt="" class="minus"></div>
-                            <div class="col-3 p-0">
-                                <input type="number" min="1" name="quantity" value="{{ $item['quantity'] }}"
-                                    class="border nomu p-0" style="width: 30.57px; height: 30.57px;" />
-                            </div>
-                            <div class="col-3 p-0"><img src="/img/plus-2.png" style="width:13.12px;"
-                                    class="plus" alt=""></div>
-                        </div>
                     </div>
-                </form>
+                @endif
             @endforeach
 
         </div>
@@ -58,13 +51,11 @@
             <h3 class="text-center">Detail Pembayaran</h3>
             <div class="col-6 first">
                 <p class="">Subtotal</p>
-                <p class="">PB1</p>
                 <hr>
                 <p class="zenbu">Total</p>
             </div>
             <div class="col-6 second text-end">
                 <p class="">Rp {{ \Cart::getTotal() }}</p>
-                <p class="">Rp 7.000</p>
                 <hr>
                 <p class="zenbu">Rp {{ \Cart::getTotal() }}</p>
             </div>
@@ -72,7 +63,8 @@
 
 
         <div class="row bayar">
-            <button><img src="/img/Wallet_fill.png" alt="">
+            <button onclick="window.location.href='{{ route('invoice', $meja->id) }}'"><img src="/img/Wallet_fill.png"
+                    alt="">
                 <p class="mt-5 d-inline">Lanjut ke pembayaran <span class="ms-4">Rp
                         {{ \Cart::getTotal() }}</span></p>
             </button>

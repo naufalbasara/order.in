@@ -20,17 +20,17 @@ use App\Http\Livewire\CartList;
 */
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
-    Route::get('/admin/menu/add',[AdminController::class, 'add_menu']);
-    Route::post('/admin/menu/store',[AdminController::class, 'store_menu']);
-    Route::get('/admin/menu/edit/{menu}',[AdminController::class, 'edit_menu']);
-    Route::post('/admin/menu/update/{menu}',[AdminController::class, 'update_menu'])->name('update-menu');
-    Route::get('/admin/menu/delete/{menu}',[AdminController::class, 'delete_menu'])->name('delete-menu');
+    Route::get('/admin/menu/add', [AdminController::class, 'add_menu']);
+    Route::post('/admin/menu/store', [AdminController::class, 'store_menu']);
+    Route::get('/admin/menu/edit/{menu}', [AdminController::class, 'edit_menu']);
+    Route::post('/admin/menu/update/{menu}', [AdminController::class, 'update_menu'])->name('update-menu');
+    Route::get('/admin/menu/delete/{menu}', [AdminController::class, 'delete_menu'])->name('delete-menu');
 });
 
-Route::get('/admin/login',[LoginController::class, 'index'])->name('login');
-Route::post('/admin/login',[LoginController::class, 'authenticate']);
-Route::get('/admin/register',[LoginController::class, 'index_register']);
-Route::post('/admin/register',[LoginController::class, 'register']);
+Route::get('/admin/login', [LoginController::class, 'index'])->name('login');
+Route::post('/admin/login', [LoginController::class, 'authenticate']);
+Route::get('/admin/register', [LoginController::class, 'index_register']);
+Route::post('/admin/register', [LoginController::class, 'register']);
 Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
 // bagian Mitsal
 // Landing Page
@@ -47,10 +47,9 @@ Route::post('/{meja}/detail/{menu}', [PesananController::class, "pesan"])->name(
 // Menu dengan Cart
 
 
-// Bagian Aji
+/// Bagian Aji
 // Detail Pesanan
 Route::get('/{meja}/detailPesanan', [MenuController::class, "cartList"])->name('detailPesanan');
-
 // bagian RB
 // Detail Menu
 Route::get('/detail', function () {
