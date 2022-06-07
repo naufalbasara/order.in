@@ -17,22 +17,40 @@ class MenuController extends Controller
 
 
 
+     
 
 
 
-    public function index(Meja $meja) {
+
+    public function index(Request $request, Meja $meja) {
         //
-        $menu = Menu::all();
+        // $menu = Menu::all();
+        $search = $request->input('search');
+
+       
+        $menu = Menu::query()
+            ->where('namaMenu', 'LIKE', "%{$search}%")
+            ->orWhere('harga', 'LIKE', "%{$search}%")
+            ->get();
+        $cartItems = \Cart::session($meja->id)->getContent()->toArray();
         $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
         $cartTotal = \Cart::session($meja->id)->getTotal();
 
+
+
         return view('menu', [
             'menu' => $menu,
+            'cartItems' => $cartItems,
             'cartTotalQuantity' => $cartTotalQuantity,
             'cartTotal' => $cartTotal,
             'meja' => $meja
         ]);
     }
+
+    // public function searchMenu(Meja $meja){
+    //     return view('menu', ['menu' => Menu::latest()->filter(request(['search'])), 'meja' => $meja]);
+    // }
+
 
     public function cartList(Meja $meja) {
         //
@@ -40,12 +58,16 @@ class MenuController extends Controller
         $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
         $cartTotal = \Cart::session($meja->id)->getTotal();
 
+        // dd($cartItems);
+
         return view('detailPesanan', [
             'cartItems' => $cartItems,
             'cartTotalQuantity' => $cartTotalQuantity,
             'cartTotal' => $cartTotal,
             'meja' => $meja
         ]);
+
+
     }
 
     /**

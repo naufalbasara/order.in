@@ -82,6 +82,49 @@ div .card-body {
     padding: 18px 19px 16px 20px !important;
 }
 
+.confirmBox {
+    padding: 31px 22px 32px 22px;
+}
+
+.confirmBox p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 108.1%;
+    /* or 14px */
+
+    letter-spacing: 0.05em;
+
+    color: #969393;
+}
+
+.confirmBox input {
+    background: #FFFFFF;
+    border: 1px solid #F46C49;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    width: 290px;
+    height: 35px;
+}
+
+.confirmBox button {
+    background: #34B770;
+    border-radius: 20px;
+    width: 174px;
+    height: 33px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 108.1%;
+    /* or 16px */
+
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+}
+
 .buton {
     margin-top: 0.438rem;
     background: #F46C49;

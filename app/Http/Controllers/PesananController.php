@@ -64,8 +64,11 @@ class PesananController extends Controller
             'id' => $uniqid,
             'name' => $request->namaMenu,
             'price' => $request->harga,
-            'notes' => $request->note,
             'quantity' => $request->jumlah,
+            'attributes' => [
+                'menu' => $menu->id,
+                'notes' => $request->note,
+            ],
         ]
         );
 
@@ -111,9 +114,33 @@ class PesananController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+
+    public function detailEdit(Meja $meja, Menu $menu, $id)
     {
         //
+        $cartItems = \Cart::session($meja->id)->get($id)->toArray();
+        // dd($cartItems);
+        return view('editDetail', ['menu'=>$menu, 'meja'=>$meja, 'cartItems'=>$cartItems]);
+        
+    }
+
+    
+
+    public function update(Request $request, Meja $meja, Menu $menu, $id)
+    {
+        \Cart::session($meja->id)->update($id, [
+            'price' => $request->harga,
+            'quantity' => [
+                'relative' => false,
+                'value' => $request->jumlah
+            ],
+            'attributes' => [
+                'menu' => $menu->id,
+                'notes' => $request->note,
+            ],
+        ]
+        );
     }
 
     /**
@@ -122,8 +149,32 @@ class PesananController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Meja $meja, Menu $menu, $id)
+    {
+        \Cart::session($meja->id)->remove($id);
+    }
+
+    public function invoice(Meja $meja)
     {
         //
+        $cartItems = \Cart::session($meja->id)->getContent()->toArray();
+        $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
+        $cartTotal = \Cart::session($meja->id)->getTotal();
+
+        // dd($cartItems);
+
+        return view('invoice', [
+            'cartItems' => $cartItems,
+            'cartTotalQuantity' => $cartTotalQuantity,
+            'cartTotal' => $cartTotal,
+            'meja' => $meja
+        ]);
     }
+
+
+
+
 }
+
+
+

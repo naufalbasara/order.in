@@ -29,9 +29,16 @@ Route::get('/{meja}', [PesananController::class, 'index']);
 // bagian Fiqri
 // Menu
 Route::get('/{meja}/menu', [MenuController::class, "index"])->name('menu');
+Route::get('/{meja}/menu', [MenuController::class,"searchMenu"])->name('searchMenu');
 // Route::post('/{meja}/menu', ShowMenu::class)->name('addToCart');
 Route::get('/{meja}/detail/{menu}', [PesananController::class, "detail"])->name('detail');
 Route::post('/{meja}/detail/{menu}', [PesananController::class, "pesan"])->name('pesan');
+
+Route::get('/{meja}/detail/{menu}/{id}', [PesananController::class, "detailEdit"])->name('detailEdit');
+Route::post('/{meja}/detail/{menu}/{id}', [PesananController::class, "update"])->name('update');
+Route::delete('/{meja}/detail/{menu}/{id}', [PesananController::class, 'destroy'])->name('deletemenu');
+
+
 
 // Bagian Hardhika
 // Menu dengan Cart
@@ -41,6 +48,7 @@ Route::post('/{meja}/detail/{menu}', [PesananController::class, "pesan"])->name(
 // Detail Pesanan
 Route::get('/{meja}/detailPesanan', [MenuController::class, "cartList"])->name('detailPesanan');
 
+
 // bagian RB
 // Detail Menu
 Route::get('/detail', function () {
@@ -48,6 +56,5 @@ Route::get('/detail', function () {
 });
 
 // Invoice Pesanan
-Route::get('/invoice', function () {
-    return view('invoice');
-});
+Route::get('/{meja}/invoice', [PesananController::class, 'invoice'])->name('invoice');
+

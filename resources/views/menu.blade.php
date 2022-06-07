@@ -13,11 +13,13 @@
        </div>
 
        <div>
-           <form action="">
+           
                <div class="form-group">
-                   <input type="text" wire:model="search" class="form-control" id="searchmenu" placeholder="Temukan makanan atau minuman favoritmu ">
+                <form action="{{route('menu', $meja->id)}}">
+                   <input type="text" value="{{request('search')}}" name="search" class="form-control" id="searchmenu" placeholder="Temukan makanan atau minuman favoritmu ">
+                  </form>
                  </div>
-           </form>
+           
        </div>
    </div>
 
@@ -59,7 +61,26 @@
          @endforeach
      </div>
 
-     @if(count(\Cart::getContent()) > 0)
+
+     {{-- @if(count(\Cart::getContent()) = 0)
+     <div>
+      <div class="fixed-bottom footer">
+        <div class="confirmBox " style="border: none !important;">
+            <h5 class="text-start ms-3"> <img style="width: 16px; height: 14px;" src="/img/backBlack.png" alt=""> Dine In</h5>
+            
+            <p class="text-center p-0 m-0">Apakah nomer meja anda sudah benar?</p>
+            <div class="d-flex flex-column justify-content-center align-items-center text-center">
+              <input type="text" value="{{$meja->id}}">
+
+              <button class="d-block" type="submit">BENAR EUY</button>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+    @endif --}}
+
+     @if(\Cart::getTotalQuantity() > 0)
      <a href="{{route('detailPesanan', $meja->id)}}">
      <div class="fixed-bottom footer">
        <div class="orderbox">
@@ -78,6 +99,46 @@
    </div>
    </a>
    @endif
+
+   {{-- <script>
+        $('#searchmenu').on('keyup', function(){
+        search();
+        });
+        search();
+        function search(){
+        var keyword = $('#searchmenu').val();
+        $.post('{{ route("searchMenu", $meja->id) }}',
+        {
+        _token: $('meta[name="csrf-token"]').attr('content'),
+        keyword:keyword
+        },
+        function(data){
+        table_post_row(data);
+        });
+        }
+        // table row with ajax
+        function table_post_row(res){
+        let htmlView = '';
+        if(res.menu.length <= 0){
+        htmlView+= `
+        <tr>
+        <td colspan="4">No data.</td>
+        </tr>`;
+        }
+        for(let i = 0; i < res.menu.length; i++){
+        htmlView += ``;
+        }
+        $('tbody').html(htmlView);
+        }
+   </script> --}}
+
+   <script>
+     let confirm = document.querySelector('.confirmBox button');
+
+      confirm.addEventListener('click', function(){
+          document.querySelector('.confirmBox').style.display = 'none';
+      });
+   </script>
 
     
 </div>
