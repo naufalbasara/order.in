@@ -57,6 +57,4 @@ Route::get('/detail', function () {
 });
 
 // Invoice Pesanan
-Route::get('/invoice', function () {
-    return view('invoice');
-});
+Route::get('/{meja}/invoice', [PesananController::class, 'invoice'])->name('invoice');
