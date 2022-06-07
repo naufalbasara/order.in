@@ -33,7 +33,6 @@ Route::middleware('auth')->group(function () {
     // Admin Menu Section
     Route::get('/admin/menu', [AdminController::class, 'view_menu']);
 
-<<<<<<< HEAD
     // Admin Info Section
     Route::get('/admin/info-restaurant/{restoran}', [AdminController::class, 'view_info']);
     Route::post('/admin/info-restaurant/update/{restoran}', [AdminController::class, 'update_info'])->name('update-info');
@@ -44,8 +43,6 @@ Route::middleware('auth')->group(function () {
     // Admin Payment
     Route::get('/admin/payment', [AdminController::class, 'view_payment']);
 });
-=======
->>>>>>> ba9ca70d04520bf96976373347a6242f41ca1bd6
 Route::get('/admin/login', [LoginController::class, 'index'])->name('login');
 Route::post('/admin/login', [LoginController::class, 'authenticate']);
 Route::get('/admin/register', [LoginController::class, 'index_register']);
