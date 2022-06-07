@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
 use App\Http\Livewire\CartCreate;
 use App\Http\Livewire\ShowMenu;
@@ -26,7 +28,21 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::post('/admin/menu/update/{menu}', [AdminController::class, 'update_menu'])->name('update-menu');
     Route::get('/admin/menu/delete/{menu}', [AdminController::class, 'delete_menu'])->name('delete-menu');
 });
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index']);
+    // Admin Menu Section
+    Route::get('/admin/menu', [AdminController::class, 'view_menu']);
 
+    // Admin Info Section
+    Route::get('/admin/info-restaurant/{restoran}', [AdminController::class, 'view_info']);
+    Route::post('/admin/info-restaurant/update/{restoran}', [AdminController::class, 'update_info'])->name('update-info');
+
+    // Admin Sales Section
+    Route::get('/admin/sales', [AdminController::class, 'view_sales']);
+
+    // Admin Payment
+    Route::get('/admin/payment', [AdminController::class, 'view_payment']);
+});
 Route::get('/admin/login', [LoginController::class, 'index'])->name('login');
 Route::post('/admin/login', [LoginController::class, 'authenticate']);
 Route::get('/admin/register', [LoginController::class, 'index_register']);
