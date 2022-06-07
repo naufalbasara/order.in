@@ -22,6 +22,11 @@ use App\Http\Livewire\CartList;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin/login',[LoginController::class, 'index'])->name('login');
+Route::post('/admin/login',[LoginController::class, 'authenticate']);
+Route::get('/admin/register',[LoginController::class, 'index_register']);
+Route::post('/admin/register',[LoginController::class, 'register']);
+Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
 // bagian Mitsal
 // Landing Page
 Route::get('/{meja}', [PesananController::class, 'index']);
