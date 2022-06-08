@@ -58,7 +58,6 @@ class PesananController extends Controller
         ]);
 
 
-<<<<<<< HEAD
         \Cart::session($meja->id)->add([
             'id' => $uniqid,
             'name' => $request->namaMenu,
@@ -69,17 +68,6 @@ class PesananController extends Controller
                 'notes' => $request->note,
             ],
         ]
-=======
-
-        \Cart::session($meja->id)->add(
-            [
-                'id' => $uniqid,
-                'name' => $request->namaMenu,
-                'price' => $request->harga,
-                'notes' => $request->note,
-                'quantity' => $request->jumlah,
-            ]
->>>>>>> b48536ef77a97bad918b48732d82f65af18ce27e
         );
     }
 
@@ -178,28 +166,9 @@ class PesananController extends Controller
         ]);
     }
 
-<<<<<<< HEAD
 
 
 
-=======
-    public function invoice(Meja $meja)
-    {
-        //
-        $cartItems = \Cart::session($meja->id)->getContent()->toArray();
-        $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
-        $cartTotal = \Cart::session($meja->id)->getTotal();
-
-        // dd($cartItems);
-
-        return view('invoice', [
-            'cartItems' => $cartItems,
-            'cartTotalQuantity' => $cartTotalQuantity,
-            'cartTotal' => $cartTotal,
-            'meja' => $meja
-        ]);
-    }
->>>>>>> b48536ef77a97bad918b48732d82f65af18ce27e
 }
 
 

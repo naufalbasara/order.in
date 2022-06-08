@@ -29,7 +29,8 @@
      <div class="row foodGroup">
        <h1>Foods</h1>
          @foreach ($menu as $makanan)
-           @if ($makanan->kategori == "Makanan")    
+           @if ($makanan->kategori == "Makanan")  
+
            <div class="col-6 mt-3">
              <a class="card" href="{{route('detail',  [$meja->id ,$makanan->id])}}" style="text-decoration:none;">
                <img class="card-img-top" src="/img/Sego Goreng.png" alt="Card image cap">
@@ -49,6 +50,7 @@
          @foreach ($menu as $minuman)
            @if ($minuman->kategori == "Minuman")
              <div class="col-6 mt-3">
+               
                <a class="card" href="{{route('detail', [$meja->id,$minuman->id])}}" style="text-decoration:none;">
                  <img class="card-img-top" src="/img/Sego Goreng.png" alt="Card image cap">
                  <div class="card-body">
@@ -62,29 +64,13 @@
      </div>
 
 
-     {{-- @if(count(\Cart::getContent()) = 0)
-     <div>
-      <div class="fixed-bottom footer">
-        <div class="confirmBox " style="border: none !important;">
-            <h5 class="text-start ms-3"> <img style="width: 16px; height: 14px;" src="/img/backBlack.png" alt=""> Dine In</h5>
-            
-            <p class="text-center p-0 m-0">Apakah nomer meja anda sudah benar?</p>
-            <div class="d-flex flex-column justify-content-center align-items-center text-center">
-              <input type="text" value="{{$meja->id}}">
 
-              <button class="d-block" type="submit">BENAR EUY</button>
-            </div>
-            
-        </div>
-    </div>
-    </div>
-    @endif --}}
 
      @if(\Cart::getTotalQuantity() > 0)
      <a href="{{route('detailPesanan', $meja->id)}}">
      <div class="fixed-bottom footer">
        <div class="orderbox">
-           <h5 class="text-center">PESANAN</h5>
+           <h5 class="text-center text-dark">PESANAN</h5>
 
            <div class="row d-flex align-items-center justify-content-between buton">
                <div class="col-6 ">

@@ -5,10 +5,6 @@ use App\Http\Controllers\PesananController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
-use App\Http\Livewire\CartCreate;
-use App\Http\Livewire\ShowMenu;
-use App\Http\Livewire\ShowMenu2;
-use App\Http\Livewire\CartList;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +39,8 @@ Route::middleware('auth')->group(function () {
     // Admin Payment
     Route::get('/admin/payment', [AdminController::class, 'view_payment']);
 });
+
+
 Route::get('/admin/login', [LoginController::class, 'index'])->name('login');
 Route::post('/admin/login', [LoginController::class, 'authenticate']);
 Route::get('/admin/register', [LoginController::class, 'index_register']);
@@ -55,7 +53,7 @@ Route::get('/{meja}', [PesananController::class, 'index']);
 // bagian Fiqri
 // Menu
 Route::get('/{meja}/menu', [MenuController::class, "index"])->name('menu');
-Route::get('/{meja}/menu', [MenuController::class,"searchMenu"])->name('searchMenu');
+// Route::get('/{meja}/menu', [MenuController::class,"searchMenu"])->name('searchMenu');
 // Route::post('/{meja}/menu', ShowMenu::class)->name('addToCart');
 Route::get('/{meja}/detail/{menu}', [PesananController::class, "detail"])->name('detail');
 Route::post('/{meja}/detail/{menu}', [PesananController::class, "pesan"])->name('pesan');

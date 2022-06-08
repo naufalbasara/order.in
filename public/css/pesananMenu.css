@@ -4,6 +4,13 @@
     background-size: cover;
 }
 
+.bg-inventory {
+    height: 234px;
+    width: 420px;
+    background: url("../img/bgDetail.png") no-repeat;
+    background-size: cover;
+}
+
 .row {
     padding-left: 14px;
     padding-right: 14px;

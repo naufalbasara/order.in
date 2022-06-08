@@ -1,8 +1,8 @@
 @extends('templates.main')
 
 @section('css')
-<link href="css/detail.css" rel="stylesheet" >
-<link href="css/global.css" rel="stylesheet" >
+<link href="/css/detail.css" rel="stylesheet" >
+<link href="/css/global.css" rel="stylesheet" >
 @endsection
 
 @section('content')
@@ -16,10 +16,10 @@
         </div>
     </div>
 </div>
-<div class="container d-flex justify-content-center" style="z-index: -1" >
-    {{-- <img src="" class="rounded mx-auto d-block position-absolute"style="top: 150px" alt="..."> --}}
+<div class="container  d-flex justify-content-center" style="z-index: -1" >
+    <img src="/img/Sego Goreng.png" class="rounded mx-auto d-block position-absolute"style="top: 150px" alt="...">
 </div>
-<div class="container d-flex flex-column align-items-center mt-5">
+<div class="container d-flex flex-column align-items-center" style="margin-top: 70px;">
    
     <h1 class="namaMenu">{{$menu->namaMenu}}</h1>
     <h3 class="harga" style="color: #F46C49">{{$menu->harga}}</h3>

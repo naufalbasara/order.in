@@ -108,7 +108,7 @@ div .card-body {
     height: 35px;
 }
 
-.confirmBox button {
+.confirmBox a {
     background: #34B770;
     border-radius: 20px;
     width: 174px;
