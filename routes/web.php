@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
 
     // Admin Payment
     Route::get('/admin/payment', [AdminController::class, 'view_payment']);
+    Route::get('/admin/payment/detail/{meja}', [AdminController::class, 'detail_payment']);
 });
 
 
@@ -46,11 +47,11 @@ Route::post('/admin/login', [LoginController::class, 'authenticate']);
 Route::get('/admin/register', [LoginController::class, 'index_register']);
 Route::post('/admin/register', [LoginController::class, 'register']);
 Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
-// bagian Mitsal
+
 // Landing Page
 Route::get('/{meja}', [PesananController::class, 'index']);
 
-// bagian Fiqri
+
 // Menu
 Route::get('/{meja}/menu', [MenuController::class, "index"])->name('menu');
 // Route::get('/{meja}/menu', [MenuController::class,"searchMenu"])->name('searchMenu');
@@ -63,15 +64,9 @@ Route::post('/{meja}/detail/{menu}/{id}', [PesananController::class, "update"])-
 Route::delete('/{meja}/detail/{menu}/{id}', [PesananController::class, 'destroy'])->name('deletemenu');
 
 
-
-// Bagian Hardhika
-// Menu dengan Cart
-
-
-/// Bagian Aji
 // Detail Pesanan
 Route::get('/{meja}/detailPesanan', [MenuController::class, "cartList"])->name('detailPesanan');
-// bagian RB
+
 // Detail Menu
 Route::get('/detail', function () {
     return view('detail');

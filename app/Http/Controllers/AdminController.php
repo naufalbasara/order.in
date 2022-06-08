@@ -78,5 +78,22 @@ class AdminController extends Controller
         return view('admin.sales-view', ['pesanan'=>$pesanan, 'detailPesanan'=>$detailPesanan]);
     }
 
+    // ---------------------------admin QR Code section---------------------------
+    function view_payment() {
+        $meja = Meja::all();
+        return view('admin.payment-view', ['meja'=>$meja]);
+    }
 
+    function detail_payment(Meja $meja) {
+        $cartItems = \Cart::session($meja->id)->getContent()->toArray();
+        $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
+        $cartTotal = \Cart::session($meja->id)->getTotal();
+
+        return view('admin.payment-detail', [
+            'cartItems'=>$cartItems,
+            'cartTotalQuantity'=>$cartTotalQuantity,
+            'cartTotal'=>$cartTotal,
+            'meja'=>$meja
+        ]);
+    }
 }

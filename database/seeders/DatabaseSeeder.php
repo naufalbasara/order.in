@@ -30,9 +30,8 @@ class DatabaseSeeder extends Seeder
             'kategori' => 'Minuman'
         ]);
 
-        Restoran::create([
-            'namaRestoran'=> 'Dapur Kenangan',
-            'alamat'=> 'Jalan Kenangan Bersama Dia'
+        Meja::create([
+            'nomor_meja'=> 1
         ]);
 
         User::create([
