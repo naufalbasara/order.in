@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Menu;
+use App\Models\Meja;
 use App\Models\Restoran;
 use App\Models\Pesanan;
 use App\Models\Detail_Pesanan;
