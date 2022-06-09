@@ -52,20 +52,22 @@
 
         <div class="row qr text-center justify-content-center">
             <h4 class="text-center">Tunjukan QR Code dibawah ini ke kasir </h4>
-            <img class="text-center" src="{{$qrcode}}" alt="">
+            <img class="text-center" src="{{ $qrcode }}" alt="">
 
         </div>
 
 
-            <hr>
+        <hr>
 
 
 
 
         <div class="row bayar">
-            <button><img src="/img/whitePlus.png" alt="">
-                <p class="mt-5 d-inline">Buat pesanan baru</p>
-            </button>
+            <a style="width: 354 px;" href="{{ route('menu', $meja->id) }}">
+                <img src="/img/whitePlus.png" alt="">
+                <p class="mt-5 pt-5 pb-4 d-inline">Buat pesanan baru</p>
+
+            </a>
         </div>
 
     </div>
