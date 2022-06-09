@@ -117,10 +117,9 @@ class AdminController extends Controller
 	    	$pesanan->save();
 
 
-        $pesanan_baru = Pesanan::where('idMeja', $meja->id)->first();
 
-        $cek_pesanan_detail = Detail_Pesanan::where('idPesanan', $pesanan_baru->id)->first();
-        if(empty($cek_pesanan_detail)) {
+        // $cek_pesanan_detail = Detail_Pesanan::where('idPesanan', $pesanan_baru->id)->first();
+        
             $pesanan_detail = new Detail_Pesanan;
             
             foreach ($cartItems as $items) {
@@ -131,11 +130,11 @@ class AdminController extends Controller
             $pesanan_detail->note = $items['attributes']['notes'];
 	    	$pesanan_detail->jumlah_harga = $items['quantity']*$items['price'];
 	    	$pesanan_detail->save();
-        }
+        
         }
         } 
 
-        $pesanan = Pesanan::where('idMeja', $meja->id)->first();
+        $pesanan = Pesanan::where('idMeja', $meja->id)->latest('id')->first();
         $pesanan->jumlah_pesanan = $cartTotalQuantity;
     	$pesanan->jumlah_harga = $cartTotal;
     	$pesanan->update();
