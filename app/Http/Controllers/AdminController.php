@@ -21,11 +21,11 @@ class AdminController extends Controller
         return view('admin.menu-view', ['menu'=> $menu]);
     }
 
-    function add_menu(){
+    function view_add_menu(){
         return view('admin.menu-add');
     }
 
-    function store_menu(Request $request) {
+    function insert_menu(Request $request) {
         $menu = new Menu;
         $request->validate([
             'namaMenu'=>['required'],
@@ -41,7 +41,7 @@ class AdminController extends Controller
         return redirect('/admin/menu');
     }
 
-    function edit_menu(Menu $menu) {
+    function view_edit_menu(Menu $menu) {
         return view('admin.menu-edit', ['menu'=>$menu]);
     }
 
@@ -100,7 +100,7 @@ class AdminController extends Controller
         ]);
     }
 
-    function confirm_payment(Meja $meja) {
+    function insertPesanan(Meja $meja) {
         $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
         $cartItems = \Cart::session($meja->id)->getContent()->toArray();
         $cartTotal = \Cart::session($meja->id)->getTotal();
@@ -119,13 +119,15 @@ class AdminController extends Controller
         $cek_pesanan_detail = Detail_Pesanan::where('idPesanan', $pesanan_baru->id)->first();
         if(empty($cek_pesanan_detail)) {
             $pesanan_detail = new Detail_Pesanan;
+            if($pesanan_detail->jumlah > 0) {
             foreach ($cartItems as $items) {
 	    	$pesanan_detail->idMenu = $items['attributes']['menu'];
 	    	$pesanan_detail->idPesanan = $pesanan->id;
-	    	$pesanan_detail->jumlah = $items['quantity'];
+            $pesanan_detail->jumlah = $items['quantity'];
             $pesanan_detail->note = $items['attributes']['notes'];
 	    	$pesanan_detail->jumlah_harga = $items['quantity']*$items['price'];
 	    	$pesanan_detail->save();
+        }
         }
         } 
 

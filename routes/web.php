@@ -39,39 +39,39 @@ Route::middleware('auth')->group(function () {
     // Admin Payment
     Route::get('/admin/payment', [AdminController::class, 'view_payment']);
     Route::get('/admin/payment/detail/{meja}', [AdminController::class, 'detail_payment']);
-    Route::get('/admin/payment/confirm/{meja}', [AdminController::class, 'confirm_payment']);
+    Route::get('/admin/payment/confirm/{meja}', [AdminController::class, 'insertPesanan']);
 });
 
 
-Route::get('/admin/login', [LoginController::class, 'index'])->name('login');
+Route::get('/admin/login', [LoginController::class, 'view_login'])->name('login');
 Route::post('/admin/login', [LoginController::class, 'authenticate']);
-Route::get('/admin/register', [LoginController::class, 'index_register']);
+Route::get('/admin/register', [LoginController::class, 'view_register']);
 Route::post('/admin/register', [LoginController::class, 'register']);
 Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Landing Page
-Route::get('/{meja}', [PesananController::class, 'index']);
+Route::get('/{meja}', [PesananController::class, 'view_landingPage']);
 
 
 // Menu
-Route::get('/{meja}/menu', [MenuController::class, "index"])->name('menu');
+Route::get('/{meja}/menu', [MenuController::class, "view_menu"])->name('menu');
 // Route::get('/{meja}/menu', [MenuController::class,"searchMenu"])->name('searchMenu');
 // Route::post('/{meja}/menu', ShowMenu::class)->name('addToCart');
-Route::get('/{meja}/detail/{menu}', [PesananController::class, "detail"])->name('detail');
+Route::get('/{meja}/detail/{menu}', [PesananController::class, "view_detailMenu"])->name('detail');
 Route::post('/{meja}/detail/{menu}', [PesananController::class, "pesan"])->name('pesan');
 
-Route::get('/{meja}/detail/{menu}/{id}', [PesananController::class, "detailEdit"])->name('detailEdit');
-Route::post('/{meja}/detail/{menu}/{id}', [PesananController::class, "update"])->name('update');
-Route::delete('/{meja}/detail/{menu}/{id}', [PesananController::class, 'destroy'])->name('deletemenu');
+Route::get('/{meja}/detail/{menu}/{id}', [PesananController::class, "view_EditPesanan"])->name('detailEdit');
+Route::post('/{meja}/detail/{menu}/{id}', [PesananController::class, "updateCartSessionQuantity"])->name('update');
+// Route::delete('/{meja}/detail/{menu}/{id}', [PesananController::class, 'destroy'])->name('deletemenu');
 
 
 // Detail Pesanan
-Route::get('/{meja}/detailPesanan', [MenuController::class, "cartList"])->name('detailPesanan');
+Route::get('/{meja}/detailPesanan', [MenuController::class, "view_detailPesanan"])->name('detailPesanan');
 
-// Detail Menu
-Route::get('/detail', function () {
-    return view('detail');
-});
+// // Detail Menu
+// Route::get('/detail', function () {
+//     return view('detail');
+// });
 
 // Invoice Pesanan
-Route::get('/{meja}/invoice', [PesananController::class, 'invoice'])->name('invoice');
+Route::get('/{meja}/invoice', [PesananController::class, 'view_invoice'])->name('invoice');

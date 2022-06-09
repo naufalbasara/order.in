@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    function index() {
+    function view_login() {
         return view('admin.login');
     }
 
-    function index_register() {
+    function view_register() {
         return view('admin.register');
     }
 

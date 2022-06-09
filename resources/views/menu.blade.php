@@ -25,7 +25,7 @@
 
    <!-- food section -->
   
-     
+     @if(count($menu) > 0)
      <div class="row foodGroup">
        <h1>Foods</h1>
          @foreach ($menu as $makanan)
@@ -62,7 +62,9 @@
            @endif
          @endforeach
      </div>
-
+     @else
+     <h1 class="text-center text-danger">Tidak ada hasil pencarian yang cocok</h1>
+     @endif
 
 
 

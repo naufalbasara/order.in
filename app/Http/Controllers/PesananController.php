@@ -18,9 +18,9 @@ class PesananController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Meja $meja)
+    public function view_landingPage(Meja $meja)
     {
-        return view('index', ['meja' => $meja]);
+        return view('landing_page', ['meja' => $meja]);
     }
 
 
@@ -41,13 +41,13 @@ class PesananController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function detail(Meja $meja, Menu $menu)
+    public function view_detailMenu(Meja $meja, Menu $menu)
     {
         //
-        return view('detail', ['menu' => $menu, 'meja' => $meja]);
+        return view('detailMenu', ['menu' => $menu, 'meja' => $meja]);
     }
 
-    public function pesan(Request $request, Meja $meja, Menu $menu)
+    public function insertSelectedMenu(Request $request, Meja $meja, Menu $menu)
     {
 
         $uniqid = Str::random(9);
@@ -113,18 +113,18 @@ class PesananController extends Controller
      */
 
 
-    public function detailEdit(Meja $meja, Menu $menu, $id)
+    public function view_EditPesanan(Meja $meja, Menu $menu, $id)
     {
         //
         $cartItems = \Cart::session($meja->id)->get($id)->toArray();
         // dd($cartItems);
-        return view('editDetail', ['menu'=>$menu, 'meja'=>$meja, 'cartItems'=>$cartItems]);
+        return view('editPesanan', ['menu'=>$menu, 'meja'=>$meja, 'cartItems'=>$cartItems]);
         
     }
 
     
 
-    public function update(Request $request, Meja $meja, Menu $menu, $id)
+    public function updateCartSessionQuantity(Request $request, Meja $meja, Menu $menu, $id)
     {
         \Cart::session($meja->id)->update($id, [
             'price' => $request->harga,
@@ -146,12 +146,9 @@ class PesananController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Meja $meja, Menu $menu, $id)
-    {
-        \Cart::session($meja->id)->remove($id);
-    }
 
-    public function invoice(Meja $meja)
+
+    public function view_invoice(Meja $meja)
     {
         //
         $qrcode = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://127.0.0.1:8000/admin/payment/detail/{$meja->id}";

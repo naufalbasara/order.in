@@ -7,7 +7,7 @@
 @section('content')
     <div class="container-fluid ">
         <div class="row bg-detail">
-            <a href="{{ url()->previous() }}">
+            <a href="{{ route('menu', $meja->id) }}">
                 <img src="/img/back.png" alt="">
             </a>
         </div>
@@ -42,7 +42,7 @@
                 <p>Tambah menu yang lain sesuai keinginanmu</p>
             </div>
             <div class="col-4 text-end align-self-center">
-                <a href="{{ url()->previous() }}"><button> <img src="/img/plus.png" alt=""> Tambah menu</button></a>
+                <a href="{{ route('menu', $meja->id) }}"><button> <img src="/img/plus.png" alt=""> Tambah menu</button></a>
             </div>
         </div>
 

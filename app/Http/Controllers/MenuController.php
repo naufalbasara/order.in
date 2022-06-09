@@ -22,7 +22,7 @@ class MenuController extends Controller
 
 
 
-    public function index(Request $request, Meja $meja) {
+    public function view_menu(Request $request, Meja $meja) {
         //
         // $menu = Menu::all();
         $search = $request->input('search');
@@ -49,7 +49,7 @@ class MenuController extends Controller
     }
 
 
-    public function cartList(Meja $meja) {
+    public function view_detailPesanan(Meja $meja) {
         //
         $cartItems = \Cart::session($meja->id)->getContent()->toArray();
         $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
