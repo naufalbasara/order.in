@@ -41,5 +41,10 @@ class DatabaseSeeder extends Seeder
             'isAdmin' => 1
         ]);
 
+        Restoran::create([
+            'namaRestoran'=> 'Dapur Kenangan',
+            'alamat' => 'Jalan Kenangan Bersama Dia'
+        ]);
+
     }
 }
