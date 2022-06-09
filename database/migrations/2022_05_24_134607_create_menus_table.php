@@ -18,6 +18,7 @@ class CreateMenusTable extends Migration
             $table->string('namaMenu');
             $table->float('harga');
             $table->string('kategori');
+            $table->string('gambar');
             $table->timestamps();
         });
     }

@@ -30,12 +30,14 @@ class AdminController extends Controller
         $request->validate([
             'namaMenu'=>['required'],
             'harga'=>['required'],
-            'kategori'=>['required']
+            'kategori'=>['required'],
+            'gambar'=>['required']
         ]);
 
         $menu->namaMenu = $request->namaMenu;
         $menu->harga = $request->harga;
         $menu->kategori = $request->kategori;
+        $menu->gambar = $request->gambar;
         $menu->save();
 
         return redirect('/admin/menu');
@@ -49,6 +51,7 @@ class AdminController extends Controller
         $menu->namaMenu = $request->namaMenu;
         $menu->harga = $request->harga;
         $menu->kategori = $request->kategori;
+        $menu->gambar = $request->gambar;
         $menu->save();
 
         return redirect('/admin/menu');
@@ -112,10 +115,10 @@ class AdminController extends Controller
 	    	$pesanan->jumlah_harga = 0;
             $pesanan->idAkun = auth()->user()->id;
 	    	$pesanan->save();
-    	
-    
-        $pesanan_baru = Pesanan::where('idMeja', $meja->id)->first();    
-        
+
+
+        $pesanan_baru = Pesanan::where('idMeja', $meja->id)->first();
+
         $cek_pesanan_detail = Detail_Pesanan::where('idPesanan', $pesanan_baru->id)->first();
         if(empty($cek_pesanan_detail)) {
             $pesanan_detail = new Detail_Pesanan;
@@ -127,12 +130,14 @@ class AdminController extends Controller
 	    	$pesanan_detail->jumlah_harga = $items['quantity']*$items['price'];
 	    	$pesanan_detail->save();
         }
-        } 
+        }
 
         $pesanan = Pesanan::where('idMeja', $meja->id)->first();
         $pesanan->jumlah_pesanan = $cartTotalQuantity;
     	$pesanan->jumlah_harga = $cartTotal;
     	$pesanan->update();
+
+        \Cart::session($meja->id)->clear();
         return redirect('/admin/payment');
     }
 
