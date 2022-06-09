@@ -149,17 +149,18 @@ div .row {
     margin-bottom: 48px;
 }
 
-.bayar button {
+.bayar a {
     background: #f46c49;
     border-radius: 10px;
     border-color: #f46c49;
     font-weight: 600;
     font-size: 15px;
     color: #ffffff;
-    padding: 0px !important;
+    text-decoration: none;
+    text-align: center;
 }
 
-.bayar button img {
+.bayar a img {
     padding-left: 1.71px;
     margin-right: 8.38px;
     padding-top: 16px;

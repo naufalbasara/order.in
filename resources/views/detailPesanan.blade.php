@@ -16,22 +16,20 @@
         <div class="row align-items-start">
             <h1>Menu yang dipesan</h1>
             @foreach ($cartItems as $item)
-
-                    @if($item['quantity'] > 0) 
-                
+                @if ($item['quantity'] > 0)
                     <div class="col-2 align-self-center text-center">
                         <p class="nums border">{{ $item['quantity'] }}x</p>
                     </div>
                     <div class="col-6 ps-2 align-self-center">
                         <p class="menu">{{ $item['name'] }}</p>
-                        
+
                     </div>
                     <div class="col-4 text-end">
-                        <a href="{{route('detailEdit', [$meja->id ,$item['attributes']['menu'], $item['id']])}}"><img src="/img/Edit (2).png" alt=""></a> 
+                        <a href="{{ route('detailEdit', [$meja->id, $item['attributes']['menu'], $item['id']]) }}"><img
+                                src="/img/Edit (2).png" alt=""></a>
                         <p id="linePrice" class="total mb-0">Rp {{ $item['price'] * $item['quantity'] }}</p>
                     </div>
-                
-                    @endif        
+                @endif
             @endforeach
 
         </div>
@@ -65,10 +63,10 @@
 
 
         <div class="row bayar">
-            <button onclick="window.location.href='{{route('invoice', $meja->id)}}'"><img src="/img/Wallet_fill.png" alt="">
+            <a href='{{ route('invoice', $meja->id) }}'"><img src=" /img/Wallet_fill.png" alt="">
                 <p class="mt-5 d-inline">Lanjut ke pembayaran <span class="ms-4">Rp
                         {{ \Cart::getTotal() }}</span></p>
-            </button>
+            </a>
         </div>
 
         <script>
