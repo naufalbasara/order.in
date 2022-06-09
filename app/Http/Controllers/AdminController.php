@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Menu;
+use App\Models\Meja;
 use App\Models\Restoran;
+use App\Models\User;
 use App\Models\Pesanan;
 use App\Models\Detail_Pesanan;
 use Illuminate\Http\Request;
@@ -76,6 +78,62 @@ class AdminController extends Controller
         $detailPesanan = Detail_Pesanan::paginate(10);
 
         return view('admin.sales-view', ['pesanan'=>$pesanan, 'detailPesanan'=>$detailPesanan]);
+    }
+
+
+    // ---------------------------admin QR Code section---------------------------
+    function view_payment() {
+        $meja = Meja::all();
+        return view('admin.payment-view', ['meja'=>$meja]);
+    }
+
+    function detail_payment(Meja $meja) {
+        $cartItems = \Cart::session($meja->id)->getContent()->toArray();
+        $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
+        $cartTotal = \Cart::session($meja->id)->getTotal();
+
+        return view('admin.payment-detail', [
+            'cartItems'=>$cartItems,
+            'cartTotalQuantity'=>$cartTotalQuantity,
+            'cartTotal'=>$cartTotal,
+            'meja'=>$meja
+        ]);
+    }
+
+    function confirm_payment(Meja $meja) {
+        $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
+        $cartItems = \Cart::session($meja->id)->getContent()->toArray();
+        $cartTotal = \Cart::session($meja->id)->getTotal();
+
+
+        	$pesanan = new Pesanan();
+	    	$pesanan->idMeja = $meja->id;
+            $pesanan->jumlah_pesanan = 0;
+	    	$pesanan->jumlah_harga = 0;
+            $pesanan->idAkun = auth()->user()->id;
+	    	$pesanan->save();
+    	
+    
+        $pesanan_baru = Pesanan::where('idMeja', $meja->id)->first();    
+        
+        $cek_pesanan_detail = Detail_Pesanan::where('idPesanan', $pesanan_baru->id)->first();
+        if(empty($cek_pesanan_detail)) {
+            $pesanan_detail = new Detail_Pesanan;
+            foreach ($cartItems as $items) {
+	    	$pesanan_detail->idMenu = $items['attributes']['menu'];
+	    	$pesanan_detail->idPesanan = $pesanan->id;
+	    	$pesanan_detail->jumlah = $items['quantity'];
+            $pesanan_detail->note = $items['attributes']['notes'];
+	    	$pesanan_detail->jumlah_harga = $items['quantity']*$items['price'];
+	    	$pesanan_detail->save();
+        }
+        } 
+
+        $pesanan = Pesanan::where('idMeja', $meja->id)->first();
+        $pesanan->jumlah_pesanan = $cartTotalQuantity;
+    	$pesanan->jumlah_harga = $cartTotal;
+    	$pesanan->update();
+        return redirect('/admin/payment');
     }
 
 

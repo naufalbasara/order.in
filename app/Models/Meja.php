@@ -9,7 +9,9 @@ use App\Models\Pesanan;
 class Meja extends Model
 {
     use HasFactory;
-    protected $fillable = ['id'];
+    protected $fillable = [
+        'id', 'nomor_meja'
+    ];
 
     public function pesanan()
     {

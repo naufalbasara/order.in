@@ -66,6 +66,7 @@ class PesananController extends Controller
             'attributes' => [
                 'menu' => $menu->id,
                 'notes' => $request->note,
+                'meja' => $meja->id
             ],
         ]
         );
