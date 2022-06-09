@@ -8,18 +8,17 @@
 <div class="container-fluid ">
    <div class="row d-flex justify-content-center ">
        <div class="col-md-12 text-center mx-auto my-auto bg-dapur ">
-           <h1>DAPUR <br> NUSANTARA</h1>
-           <p>Jl. Kenangan Bersama Mantan Terindah</p>
+           <h1>{{$restoran->namaRestoran}}</h1>
+           <p>{{$restoran->alamat}}</p>
        </div>
 
        <div>
-           
                <div class="form-group">
                 <form action="{{route('menu', $meja->id)}}">
                    <input type="text" value="{{request('search')}}" name="search" class="form-control" id="searchmenu" placeholder="Temukan makanan atau minuman favoritmu ">
                   </form>
                  </div>
-           
+
        </div>
    </div>
 
@@ -29,11 +28,11 @@
      <div class="row foodGroup">
        <h1>Foods</h1>
          @foreach ($menu as $makanan)
-           @if ($makanan->kategori == "Makanan")  
+           @if ($makanan->kategori == "Makanan")
 
            <div class="col-6 mt-3">
              <a class="card" href="{{route('detail',  [$meja->id ,$makanan->id])}}" style="text-decoration:none;">
-               <img class="card-img-top" src="/img/Sego Goreng.png" alt="Card image cap">
+               <img class="card-img-top" src="{{$makanan->gambar}}" style="width: 100%; height:170px" alt="Card image cap">
                <div class="card-body">
                  <h5 class="card-title">{{$makanan->namaMenu}}</h5>
                  <p class="card-text">Rp. {{$makanan->harga}}</p>
@@ -41,18 +40,18 @@
              </a>
            </div>
            @endif
-         @endforeach  
+         @endforeach
      </div>
-     
-       
+
+
      <div class="row foodGroup mb-5">
          <h1>Beverages</h1>
          @foreach ($menu as $minuman)
            @if ($minuman->kategori == "Minuman")
              <div class="col-6 mt-3">
-               
+
                <a class="card" href="{{route('detail', [$meja->id,$minuman->id])}}" style="text-decoration:none;">
-                 <img class="card-img-top" src="/img/Sego Goreng.png" alt="Card image cap">
+                 <img class="card-img-top" src="{{$minuman->gambar}}" style="width: 100%; height:170px" alt="Card image cap">
                  <div class="card-body">
                    <h5 class="card-title">{{$minuman->namaMenu}}</h5>
                    <p class="card-text">Rp {{$minuman->harga}}</p>
@@ -128,7 +127,7 @@
       });
    </script>
 
-    
+
 </div>
 @endsection
 

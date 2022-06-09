@@ -21,13 +21,15 @@ class DatabaseSeeder extends Seeder
         Menu::create([
             'namaMenu' => 'Ayam Goreng',
             'harga' => '10000',
-            'kategori' => 'Makanan'
+            'kategori' => 'Makanan',
+            'gambar' => 'https://selerasa.com/wp-content/uploads/2015/12/images_daging_ayam-goreng-1200x720.jpg'
         ]);
 
         Menu::create([
             'namaMenu' => 'Sanger Dingin',
             'harga' => '15000',
-            'kategori' => 'Minuman'
+            'kategori' => 'Minuman',
+            'gambar' => 'https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/4760a654-d7b7-453c-bd35-d475c34f039d_Go-Biz_20210615_224403.jpeg'
         ]);
 
         Meja::create([

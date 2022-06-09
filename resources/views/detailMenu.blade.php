@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
- 
+
 <div class="container-fluid">
     <div class="row ">
         <div class="col-md-12 p-0 bg-detail ">
@@ -17,19 +17,19 @@
     </div>
 </div>
 <div class="container  d-flex justify-content-center" style="z-index: -1" >
-    <img src="/img/Sego Goreng.png" class="rounded mx-auto d-block position-absolute"style="top: 150px" alt="...">
+    <img src="{{$menu->gambar}}" class="rounded mx-auto d-block position-absolute img-thumbnail" style="top: 200px; width:130px; height:130px" alt="...">
 </div>
 <div class="container d-flex flex-column align-items-center" style="margin-top: 70px;">
-   
+
     <h1 class="namaMenu">{{$menu->namaMenu}}</h1>
     <h3 class="harga" style="color: #F46C49">{{$menu->harga}}</h3>
-   
-    <div class="container d-flex justify-content-center align-items-center my-3">      
+
+    <div class="container d-flex justify-content-center align-items-center my-3">
                 <a type="button" class="mx-3 editButton minus"><img src="/img/minus-2.png" alt="" style="width: 37px; height:37px"></a>
                 <h1 wire:model="quantity"  style="width:58px; height:58px; background-color:#fff;" class="mx-3 text-center shadow bg-body rounded quantity" >1</h1>
                 <a type="button" class="mx-3 editButton plus"><img src="/img/plus-2.png" alt="" style="width: 37px; height:37px"></a>
     </div>
-  
+
 
 </div>
 
@@ -60,10 +60,10 @@
     $(document).ready(function(e){
         $(".plus").click(function(e){
             var quantity = $('.quantity').text();
-            quantity = parseInt(quantity);  
+            quantity = parseInt(quantity);
             quantity++;
             $('.quantity').text(quantity);
-           
+
         });
         $(".minus").click(function(e){
             var quantity = $('.quantity').text();
@@ -102,9 +102,9 @@
 
 
 
-    
+
     });
-</script> 
+</script>
 {{-- <script src="/js/detail.js"></script> --}}
 @endsection
- 
+

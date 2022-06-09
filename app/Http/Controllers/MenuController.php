@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Meja;
+use App\Models\Restoran;
 use App\Models;
 
 class MenuController extends Controller
@@ -17,7 +18,7 @@ class MenuController extends Controller
 
 
 
-     
+
 
 
 
@@ -27,24 +28,25 @@ class MenuController extends Controller
         // $menu = Menu::all();
         $search = $request->input('search');
 
-       
+
         $menu = Menu::query()
             ->where('namaMenu', 'LIKE', "%{$search}%")
             ->orWhere('harga', 'LIKE', "%{$search}%")
             ->get();
-            
+
+        $restoran = Restoran::first();
+
         $cartItems = \Cart::session($meja->id)->getContent()->toArray();
         $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
         $cartTotal = \Cart::session($meja->id)->getTotal();
-
-
 
         return view('menu', [
             'menu' => $menu,
             'cartItems' => $cartItems,
             'cartTotalQuantity' => $cartTotalQuantity,
             'cartTotal' => $cartTotal,
-            'meja' => $meja
+            'meja' => $meja,
+            'restoran' => $restoran
         ]);
     }
 

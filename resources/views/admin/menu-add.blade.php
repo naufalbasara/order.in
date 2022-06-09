@@ -42,6 +42,15 @@
                         <option value="Minuman">Minuman</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="control-label" for="gambar">Gambar</label>
+                    <input type="text" class="form-control form-control-user @error('gambar') is-invalid @enderror" name="gambar" id="gambar" value="{{old('gambar')}}" placeholder="Sumber Gambar Internet" required>
+                    @error('gambar')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
+                </div>
 
                 <button type="submit" class="btn btn-sm btn-success">Tambah</button>
             </form>

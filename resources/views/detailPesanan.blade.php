@@ -15,8 +15,10 @@
 
         <div class="row align-items-start">
             <h1>Menu yang dipesan</h1>
-            @foreach ($cartItems as $item)
-                @if ($item['quantity'] > 0)
+             @foreach ($cartItems as $item)
+
+                    @if($item['quantity'] > 0)
+
                     <div class="col-2 align-self-center text-center">
                         <p class="nums border">{{ $item['quantity'] }}x</p>
                     </div>
@@ -25,11 +27,19 @@
 
                     </div>
                     <div class="col-4 text-end">
+<<<<<<< HEAD
+                        <a href="{{route('detailEdit', [$meja->id ,$item['attributes']['menu'], $item['id']])}}"><img src="/img/Edit (2).png" alt=""></a>
+                        <p id="linePrice" class="total mb-0">Rp {{ $item['price'] * $item['quantity'] }}</p>
+                    </div>
+
+                    @endif
+=======
                         <a href="{{ route('detailEdit', [$meja->id, $item['attributes']['menu'], $item['id']]) }}"><img
                                 src="/img/Edit (2).png" alt=""></a>
                         <p id="linePrice" class="total mb-0">Rp {{ $item['price'] * $item['quantity'] }}</p>
                     </div>
                 @endif
+>>>>>>> b8ac65bf2c84c96761fb782d5d91d31683d67929
             @endforeach
 
         </div>
