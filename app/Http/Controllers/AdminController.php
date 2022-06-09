@@ -122,8 +122,9 @@ class AdminController extends Controller
         $cek_pesanan_detail = Detail_Pesanan::where('idPesanan', $pesanan_baru->id)->first();
         if(empty($cek_pesanan_detail)) {
             $pesanan_detail = new Detail_Pesanan;
-            if($pesanan_detail->jumlah > 0) {
+            
             foreach ($cartItems as $items) {
+            if($items['quantity'] > 0) {
 	    	$pesanan_detail->idMenu = $items['attributes']['menu'];
 	    	$pesanan_detail->idPesanan = $pesanan->id;
             $pesanan_detail->jumlah = $items['quantity'];

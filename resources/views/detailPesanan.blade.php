@@ -27,19 +27,11 @@
 
                     </div>
                     <div class="col-4 text-end">
-<<<<<<< HEAD
                         <a href="{{route('detailEdit', [$meja->id ,$item['attributes']['menu'], $item['id']])}}"><img src="/img/Edit (2).png" alt=""></a>
                         <p id="linePrice" class="total mb-0">Rp {{ $item['price'] * $item['quantity'] }}</p>
                     </div>
 
                     @endif
-=======
-                        <a href="{{ route('detailEdit', [$meja->id, $item['attributes']['menu'], $item['id']]) }}"><img
-                                src="/img/Edit (2).png" alt=""></a>
-                        <p id="linePrice" class="total mb-0">Rp {{ $item['price'] * $item['quantity'] }}</p>
-                    </div>
-                @endif
->>>>>>> b8ac65bf2c84c96761fb782d5d91d31683d67929
             @endforeach
 
         </div>

@@ -58,7 +58,7 @@ Route::get('/{meja}/menu', [MenuController::class, "view_menu"])->name('menu');
 // Route::get('/{meja}/menu', [MenuController::class,"searchMenu"])->name('searchMenu');
 // Route::post('/{meja}/menu', ShowMenu::class)->name('addToCart');
 Route::get('/{meja}/detail/{menu}', [PesananController::class, "view_detailMenu"])->name('detail');
-Route::post('/{meja}/detail/{menu}', [PesananController::class, "pesan"])->name('pesan');
+Route::post('/{meja}/detail/{menu}', [PesananController::class, "insertSelectedMenu"])->name('pesan');
 
 Route::get('/{meja}/detail/{menu}/{id}', [PesananController::class, "view_EditPesanan"])->name('detailEdit');
 Route::post('/{meja}/detail/{menu}/{id}', [PesananController::class, "updateCartSessionQuantity"])->name('update');

@@ -94,20 +94,7 @@
 
 
        
-        // $('#quantityForm').submit(function(e){
-        //                 $.ajax({
-        //                 type: 'post',
-        //                 url: "{{route('deletemenu', [$meja->id, $menu->id, $cartItems['id']])}}",
-        //                 data: {
-        //                 '"_token": "{{ csrf_token() }}",'    
-        //                 '_method': 'delete'
-        //                 },
-        //                 success: function(data){
-        //                     console.log(data);
-        //                     window.location.href = "{{route('menu', $meja->id)}}";
-        //                 },
-        //                 })
-    
+ 
         //             });
 
 
