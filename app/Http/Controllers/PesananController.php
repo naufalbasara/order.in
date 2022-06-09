@@ -8,6 +8,7 @@ use App\Models\Menu;
 use App\Models\DetailPesanan;
 use App\Models\Pesanan;
 use Illuminate\Support\Str;
+use QrCode;
 
 
 class PesananController extends Controller
@@ -153,20 +154,20 @@ class PesananController extends Controller
     public function invoice(Meja $meja)
     {
         //
+        $qrcode = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://127.0.0.1:8000/admin/payment/detail/{$meja->id}";
         $cartItems = \Cart::session($meja->id)->getContent()->toArray();
         $cartTotalQuantity = \Cart::session($meja->id)->getTotalQuantity();
         $cartTotal = \Cart::session($meja->id)->getTotal();
-
-        // dd($cartItems);
+ 
 
         return view('invoice', [
             'cartItems' => $cartItems,
             'cartTotalQuantity' => $cartTotalQuantity,
             'cartTotal' => $cartTotal,
-            'meja' => $meja
+            'meja' => $meja,
+            'qrcode' => $qrcode
         ]);
     }
-
 
 
 

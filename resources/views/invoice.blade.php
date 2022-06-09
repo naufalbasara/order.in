@@ -52,7 +52,8 @@
 
         <div class="row qr text-center justify-content-center">
             <h4 class="text-center">Tunjukan QR Code dibawah ini ke kasir </h4>
-            <img class="text-center" src="/img/bi_qr-code.png" alt="">
+            <img class="text-center" src="{{$qrcode}}" alt="">
+
         </div>
 
 

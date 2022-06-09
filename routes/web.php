@@ -39,10 +39,7 @@ Route::middleware('auth')->group(function () {
     // Admin Payment
     Route::get('/admin/payment', [AdminController::class, 'view_payment']);
     Route::get('/admin/payment/detail/{meja}', [AdminController::class, 'detail_payment']);
-<<<<<<< HEAD
     Route::get('/admin/payment/confirm/{meja}', [AdminController::class, 'confirm_payment']);
-=======
->>>>>>> f3adda91fc6c675b4f5b36b8527694398290a4fb
 });
 
 
